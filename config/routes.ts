@@ -46,7 +46,7 @@ export default [
     ],
   },
   {
-    name: 'list.table-list',
+    name: '查询表格',
     icon: 'table',
     path: '/list',
     component: './TableList',

@@ -1,15 +1,9 @@
 import { GithubOutlined } from '@ant-design/icons';
 import { DefaultFooter } from '@ant-design/pro-components';
-import { useIntl } from '@umijs/max';
 import React from 'react';
 
 const Footer: React.FC = () => {
-  const intl = useIntl();
-  const defaultMessage = intl.formatMessage({
-    id: 'app.copyright.produced',
-    defaultMessage: '蚂蚁集团体验技术部出品',
-  });
-
+  const defaultMessage = '中国地质大学(武汉)';
   const currentYear = new Date().getFullYear();
 
   return (
@@ -20,21 +14,21 @@ const Footer: React.FC = () => {
       copyright={`${currentYear} ${defaultMessage}`}
       links={[
         {
-          key: 'Ant Design Pro',
-          title: 'Ant Design Pro',
-          href: 'https://pro.ant.design',
+          key: '工业品采购信息系统',
+          title: '工业品采购信息系统',
+          href: 'https://github.com/paulgung/mro-boss-frontend',
           blankTarget: true,
         },
         {
           key: 'github',
           title: <GithubOutlined />,
-          href: 'https://github.com/ant-design/ant-design-pro',
+          href: 'https://github.com/paulgung/mro-boss-frontend',
           blankTarget: true,
         },
         {
-          key: 'Ant Design',
-          title: 'Ant Design',
-          href: 'https://ant.design',
+          key: 'paulgung',
+          title: 'paulgung',
+          href: 'https://github.com/paulgung/mro-boss-frontend',
           blankTarget: true,
         },
       ]}
