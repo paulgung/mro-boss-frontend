@@ -13,30 +13,191 @@
   {
     path: '/welcome',
     name: '首页',
-    icon: 'smile',
+    icon: 'home',
     component: './Welcome'
   },
   {
-    path: '/list',
-    name: '表格',
-    icon: 'table',
-    component: './TableList'
-  },
-  {
-    path: '/admin',
-    name: '管理页',
-    icon: 'crown',
-    access: 'canAdmin',
+    path: '/opportunity',
+    name: '商机管理',
+    icon: 'desktop',
     routes: [
       {
-        path: '/admin',
-        redirect: '/admin/sub-page'
+        path: '/opportunity',
+        redirect: '/opportunity/page1'
       },
       {
-        path: '/admin/sub-page',
-        name: '二级管理页',
-        component: './Admin'
+        path: '/opportunity/page1',
+        name: '单位信息',
+        component: './TableList'
       },
+      {
+        path: '/opportunity/page2',
+        name: '产品信息',
+        component: './TableList'
+      },
+      {
+        path: '/opportunity/page3',
+        name: '客户信息',
+        component: './TableList'
+      },{
+        path: '/opportunity/page4',
+        name: '供应商信息',
+        component: './TableList'
+      },
+    ],
+  },
+  {
+    path: '/inbound',
+    name: '入库管理',
+    icon: 'car',
+    routes: [
+      {
+        path: '/inbound',
+        redirect: '/inbound/page1'
+      },
+      {
+        path: '/inbound/page1',
+        name: '入库登记',
+        component: './TableList'
+      },
+      {
+        path: '/inbound/page2',
+        name: '入库查询',
+        component: './TableList'
+      }
+    ],
+  },
+  {
+    path: '/outbound',
+    name: '出库管理',
+    icon: 'calculator',
+    routes: [
+      {
+        path: '/outbound',
+        redirect: '/outbound/page1'
+      },
+      {
+        path: '/outbound/page1',
+        name: '出库登记',
+        component: './TableList'
+      },
+      {
+        path: '/outbound/page2',
+        name: '出库查询',
+        component: './TableList'
+      },
+      {
+        path: '/outbound/page3',
+        name: '退货登记',
+        component: './TableList'
+      },{
+        path: '/outbound/page4',
+        name: '退货查询',
+        component: './TableList'
+      },
+      {
+        path: '/outbound/page5',
+        name: '利润明细',
+        component: './TableList'
+      },
+    ],
+  },
+  {
+    path: '/loss',
+    name: '损耗管理',
+    icon: 'windows',
+    routes: [
+      {
+        path: '/loss',
+        redirect: '/loss/page1'
+      },
+      {
+        path: '/loss/page1',
+        name: '损耗登记',
+        component: './TableList'
+      },
+      {
+        path: '/loss/page2',
+        name: '损耗查询',
+        component: './TableList'
+      }
+    ],
+  },
+  {
+    path: '/finance',
+    name: '财务管理',
+    icon: 'dollarCircle',
+    routes: [
+      {
+        path: '/finance',
+        redirect: '/finance/page1'
+      },
+      {
+        path: '/finance/page1',
+        name: '供商付款',
+        component: './TableList'
+      },
+      {
+        path: '/finance/page2',
+        name: '收客户款',
+        component: './TableList'
+      },
+      {
+        path: '/finance/page3',
+        name: '运费结算',
+        component: './TableList'
+      },{
+        path: '/finance/page4',
+        name: '单位信息',
+        component: './TableList'
+      }
+    ],
+  },
+  {
+    path: '/statistics',
+    name: '统计汇总',
+    icon: 'areaChart',
+    // access: 'canAdmin',
+    routes: [
+      {
+        path: '/statistics',
+        redirect: '/statistics/page1'
+      },
+      {
+        path: '/statistics/page1',
+        name: '库存汇总',
+        component: './TableList'
+      },
+      {
+        path: '/statistics/page2',
+        name: '供商汇总',
+        component: './TableList'
+      },
+      {
+        path: '/statistics/page3',
+        name: '供商对账',
+        component: './TableList'
+      },
+      {
+        path: '/statistics/page4',
+        name: '运输对账',
+        component: './TableList'
+      },
+      {
+        path: '/statistics/page5',
+        name: '库存明细',
+        component: './TableList'
+      },
+      {
+        path: '/statistics/page6',
+        name: '当前库存',
+        component: './TableList'
+      },
+      {
+        path: '/statistics/page7',
+        name: '毛利汇总',
+        component: './TableList'
+      }
     ],
   },
   {

@@ -49,6 +49,40 @@ export async function getInitialState(): Promise<{
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
 export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
   return {
+    title: '工业品采购管理系统',
+    token:{
+      header: {
+        colorBgHeader: '#071023',
+        colorHeaderTitle: '#fff',
+        colorTextMenu: '#dfdfdf',
+        colorTextMenuSecondary: '#dfdfdf',
+        colorTextMenuSelected: '#fff',
+        colorBgMenuItemSelected: '#22272b',
+        colorTextMenuActive: 'rgba(255,255,255,0.85)',
+        colorTextRightActionsItem: '#dfdfdf',
+      },
+      colorTextAppListIconHover: '#fff',
+      colorTextAppListIcon: '#dfdfdf',
+      sider: {
+        colorBgCollapsedButton: '#fff',
+        colorTextCollapsedButtonHover: 'rgba(0,0,0,0.65)',
+        colorTextCollapsedButton: 'rgba(0,0,0,0.45)',
+        colorMenuBackground: '#071023',
+        colorBgMenuItemCollapsedHover: 'rgba(0,0,0,0.06)',
+        colorBgMenuItemCollapsedSelected: 'rgba(0,0,0,0.15)',
+        colorBgMenuItemCollapsedElevated: 'rgba(0,0,0,0.85)',
+        colorMenuItemDivider: 'rgba(255,255,255,0.15)',
+        colorBgMenuItemHover: 'rgba(0,0,0,0.06)',
+        colorBgMenuItemSelected: 'rgba(0,0,0,0.15)',
+        colorTextMenuSelected: '#fff',
+        colorTextMenuItemHover: 'rgba(255,255,255,0.75)',
+        colorTextMenu: 'rgba(255,255,255,0.75)',
+        colorTextMenuSecondary: 'rgba(255,255,255,0.65)',
+        colorTextMenuTitle: 'rgba(255,255,255,0.95)',
+        colorTextMenuActive: 'rgba(255,255,255,0.95)',
+        colorTextSubMenuSelected: '#fff',
+      },
+    },
     avatarProps: {
       src: gongshaoxu,  // initialState?.currentUser?.avatar
       title: <AvatarName />,
@@ -67,14 +101,6 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
         history.push(loginPath);
       }
     },
-    links: isDev
-      ? [
-          <Link key="openapi" to="/umi/plugin/openapi" target="_blank">
-            <LinkOutlined />
-            <span>OpenAPI 文档</span>
-          </Link>,
-        ]
-      : [],
     menuHeaderRender: undefined,
     childrenRender: (children) => {
       return (
