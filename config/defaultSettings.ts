@@ -20,8 +20,8 @@ const Settings: ProLayoutProps & {
   iconfontUrl: '',
   splitMenus: false,
   menu: {
-    locale:false
-  }
+    locale:false,
+  },
 };
 
 export default Settings;

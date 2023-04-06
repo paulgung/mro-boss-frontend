@@ -44,7 +44,7 @@ export default {
     res.send({
       success: true,
       data: {
-        name: 'GongShaoxu',
+        name: 'gongshaoxu',
         avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
         userid: '20191002447',
         email: 'gongshaoxu@gmail.com',

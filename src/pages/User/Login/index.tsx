@@ -91,7 +91,7 @@ const Login: React.FC = () => {
       <div
         style={{
           flex: '1',
-          padding: '32px 0',
+          padding: '64px 0',
         }}
       >
         <LoginForm

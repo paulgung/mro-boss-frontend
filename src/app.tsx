@@ -50,6 +50,7 @@ export async function getInitialState(): Promise<{
 export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
   return {
     title: '工业品采购管理系统',
+    siderWidth:200,
     token:{
       header: {
         colorBgHeader: '#071023',
@@ -73,14 +74,14 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
         colorBgMenuItemCollapsedElevated: 'rgba(0,0,0,0.85)',
         colorMenuItemDivider: 'rgba(255,255,255,0.15)',
         colorBgMenuItemHover: 'rgba(0,0,0,0.06)',
-        colorBgMenuItemSelected: 'rgba(0,0,0,0.15)',
+        colorBgMenuItemSelected: 'rgba(0,0,0,0.52)',
         colorTextMenuSelected: '#fff',
-        colorTextMenuItemHover: 'rgba(255,255,255,0.75)',
+        colorTextMenuItemHover: 'rgba(255,255,255,0.95)',
         colorTextMenu: 'rgba(255,255,255,0.75)',
         colorTextMenuSecondary: 'rgba(255,255,255,0.65)',
         colorTextMenuTitle: 'rgba(255,255,255,0.95)',
         colorTextMenuActive: 'rgba(255,255,255,0.95)',
-        colorTextSubMenuSelected: '#fff',
+        colorTextSubMenuSelected: 'rgba(255,255,255,1)',
       },
     },
     avatarProps: {
@@ -102,6 +103,8 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
       }
     },
     menuHeaderRender: undefined,
+    collapsedButtonRender:false,
+    collapsed:false,
     childrenRender: (children) => {
       return (
         <>
