@@ -4,9 +4,7 @@ import { join } from 'path';
 import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 import routes from './routes';
-
 const { REACT_APP_ENV = 'dev' } = process.env;
-
 export default defineConfig({
   /**
    * @name 开启 hash 模式
@@ -14,15 +12,6 @@ export default defineConfig({
    * @doc https://umijs.org/docs/api/config#hash
    */
   hash: true,
-
-  /**
-   * @name 兼容性设置
-   * @description 设置 ie11 不一定完美兼容，需要检查自己使用的所有依赖
-   * @doc https://umijs.org/docs/api/config#targets
-   */
-  // targets: {
-  //   ie: 11,
-  // },
   /**
    * @name 路由的配置，不在路由中引入的文件不会编译
    * @description 只支持 path，component，routes，redirect，wrappers，title 的配置
@@ -39,14 +28,8 @@ export default defineConfig({
   theme: {
     // 如果不想要 configProvide 动态设置主题需要把这个设置为 default
     // 只有设置为 variable， 才能使用 configProvide 动态设置主色调
-    'root-entry-name': 'variable',
+    'root-entry-name': 'default',
   },
-  /**
-   * @name moment 的国际化配置
-   * @description 如果对国际化没有要求，打开之后能减少js的包大小
-   * @doc https://umijs.org/docs/api/config#ignoremomentlocale
-   */
-  ignoreMomentLocale: true,
   /**
    * @name 代理配置
    * @description 可以让你的本地服务器代理到你的服务器上，这样你就可以访问服务器的数据了
@@ -76,37 +59,11 @@ export default defineConfig({
    * @name layout 插件
    * @doc https://umijs.org/docs/max/layout-menu
    */
-  title: 'Ant Design Pro',
+  title: '工业品采购信息系统',
   layout: {
     locale: true,
     ...defaultSettings,
   },
-  /**
-   * @name moment2dayjs 插件
-   * @description 将项目中的 moment 替换为 dayjs
-   * @doc https://umijs.org/docs/max/moment2dayjs
-   */
-  moment2dayjs: {
-    preset: 'antd',
-    plugins: ['duration'],
-  },
-  /**
-   * @name 国际化插件
-   * @doc https://umijs.org/docs/max/i18n
-   */
-  locale: {
-    // default zh-CN
-    default: 'zh-CN',
-    antd: true,
-    // default true, when it is true, will use `navigator.language` overwrite default
-    baseNavigator: true,
-  },
-  /**
-   * @name antd 插件
-   * @description 内置了 babel import 插件
-   * @doc https://umijs.org/docs/max/antd#antd
-   */
-  antd: {},
   /**
    * @name 网络请求配置
    * @description 它基于 axios 和 ahooks 的 useRequest 提供了一套统一的网络请求和错误处理方案。
@@ -125,7 +82,10 @@ export default defineConfig({
    */
   headScripts: [
     // 解决首次加载时白屏的问题
-    { src: '/scripts/loading.js', async: true },
+    {
+      src: '/scripts/loading.js',
+      async: true,
+    },
   ],
   //================ pro 插件配置 =================
   presets: ['umi-presets-pro'],
