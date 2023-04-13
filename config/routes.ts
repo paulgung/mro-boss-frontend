@@ -58,12 +58,12 @@
       {
         path: '/inbound/page1',
         name: '入库登记',
-        component: './TableList'
+        component: './Inbound/page1'
       },
       {
         path: '/inbound/page2',
-        name: '入库查询',
-        component: './TableList'
+        name: '入库明细',
+        component: './Inbound/page2'
       }
     ],
   },
@@ -83,7 +83,7 @@
       },
       {
         path: '/outbound/page2',
-        name: '出库查询',
+        name: '出库明细',
         component: './TableList'
       },
       {
@@ -92,12 +92,7 @@
         component: './TableList'
       },{
         path: '/outbound/page4',
-        name: '退货查询',
-        component: './TableList'
-      },
-      {
-        path: '/outbound/page5',
-        name: '利润明细',
+        name: '退货明细',
         component: './TableList'
       },
     ],
@@ -118,7 +113,7 @@
       },
       {
         path: '/loss/page2',
-        name: '损耗查询',
+        name: '损耗明细',
         component: './TableList'
       }
     ],

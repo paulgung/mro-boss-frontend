@@ -1,4 +1,4 @@
-import { getDataPage2,addDataPage1 } from '@/services/opportunity';
+import { addDataPage1, getDataPage1 } from '@/services/inbound';
 import { ModalForm, ProFormText } from '@ant-design/pro-components';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ActionType, ProColumns } from '@ant-design/pro-table';
@@ -15,36 +15,27 @@ const Index: React.FC = () => {
   const [createModalOpen, handleModalOpen] = useState<boolean>(false);
 
   const columns: ProColumns<IInterface>[] = [
+
     {
-      title: 'ID',
+      title: '入库编号',
       hideInSearch: false,
-      dataIndex: 'id',
+      dataIndex: 'inboundId',
     },
     {
-      title: '产品编号',
+      title: '入库日期',
       ellipsis: true,
-      dataIndex: 'productId',
-      hideInSearch: false,
-    },
-    {
-      title: '产品名称',
-      ellipsis: true,
-      dataIndex: 'productName',
-      hideInSearch: false,
-    },
-    {
-      title: '规格',
-      dataIndex: 'standard',
+      dataIndex: 'inboundDate',
       hideInSearch: true,
     },
     {
-      title: '型号',
-      dataIndex: 'type',
+      title: '供商名称',
+      ellipsis: true,
+      dataIndex: 'supplierId',
       hideInSearch: true,
     },
     {
-      title: '单位',
-      dataIndex: 'unit',
+      title: '操作员',
+      dataIndex: 'operator',
       hideInSearch: true,
     },
     {
@@ -57,16 +48,17 @@ const Index: React.FC = () => {
   return (
     <PageContainer>
       <ProTable<IInterface>
-        headerTitle="产品信息"
+        headerTitle="单位信息"
         columns={columns}
         actionRef={actionRef}
         cardBordered
         request={async ({ rows = 10, current }) => {
-          return getDataPage2({
+          return getDataPage1({
             pageSize: rows,
             pageNo: current,
           }).then(
             (res: any) => {
+              console.log('res', res);
               return {
                 data: res.data?.data,
                 success: res.data?.success,

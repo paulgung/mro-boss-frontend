@@ -1,4 +1,4 @@
-import { getDataPage2,addDataPage1 } from '@/services/opportunity';
+import { addDataPage2, getDataPage2 } from '@/services/inbound';
 import { ModalForm, ProFormText } from '@ant-design/pro-components';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ActionType, ProColumns } from '@ant-design/pro-table';
@@ -16,9 +16,9 @@ const Index: React.FC = () => {
 
   const columns: ProColumns<IInterface>[] = [
     {
-      title: 'ID',
+      title: '入库编号',
       hideInSearch: false,
-      dataIndex: 'id',
+      dataIndex: 'inboundId',
     },
     {
       title: '产品编号',
@@ -30,7 +30,7 @@ const Index: React.FC = () => {
       title: '产品名称',
       ellipsis: true,
       dataIndex: 'productName',
-      hideInSearch: false,
+      hideInSearch: true,
     },
     {
       title: '规格',
@@ -48,6 +48,21 @@ const Index: React.FC = () => {
       hideInSearch: true,
     },
     {
+      title: '入库数量',
+      dataIndex: 'inboundNumber',
+      hideInSearch: true,
+    },
+    {
+      title: '入库单价',
+      dataIndex: 'inboundPrice',
+      hideInSearch: true,
+    },
+    {
+      title: '入库金额',
+      dataIndex: 'inboundTotal',
+      hideInSearch: true,
+    },
+    {
       title: '备注',
       dataIndex: 'remark',
       hideInSearch: true,
@@ -57,7 +72,7 @@ const Index: React.FC = () => {
   return (
     <PageContainer>
       <ProTable<IInterface>
-        headerTitle="产品信息"
+        headerTitle="单位信息"
         columns={columns}
         actionRef={actionRef}
         cardBordered
@@ -67,6 +82,7 @@ const Index: React.FC = () => {
             pageNo: current,
           }).then(
             (res: any) => {
+              console.log('res', res);
               return {
                 data: res.data?.data,
                 success: res.data?.success,
@@ -116,7 +132,7 @@ const Index: React.FC = () => {
         open={createModalOpen}
         onOpenChange={handleModalOpen}
         onFinish={async (value) => {
-          const success = await addDataPage1(value);
+          const success = await addDataPage2(value);
           if (success) {
             handleModalOpen(false);
             if (actionRef.current) {

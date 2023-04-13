@@ -61,9 +61,9 @@ const Index: React.FC = () => {
           ).then(
             (res: any) => {
               return {
-                data: res?.data,
-                success: res?.success,
-                total: res?.totalCount,
+                data: res.data?.data,
+                success: res.data?.success,
+                total: res.data?.total,
               };
             },
             ():any => {
