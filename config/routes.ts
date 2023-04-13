@@ -141,10 +141,6 @@
         path: '/finance/page3',
         name: '运费结算',
         component: './TableList'
-      },{
-        path: '/finance/page4',
-        name: '单位信息',
-        component: './TableList'
       }
     ],
   },
@@ -185,11 +181,6 @@
       },
       {
         path: '/statistics/page6',
-        name: '当前库存',
-        component: './TableList'
-      },
-      {
-        path: '/statistics/page7',
         name: '毛利汇总',
         component: './TableList'
       }
