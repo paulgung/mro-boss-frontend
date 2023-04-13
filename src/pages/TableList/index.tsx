@@ -100,11 +100,6 @@ const TableList: React.FC = () => {
   const [currentRow, setCurrentRow] = useState<API.RuleListItem>();
   const [selectedRowsState, setSelectedRows] = useState<API.RuleListItem[]>([]);
 
-  /**
-   * @en-US International configuration
-   * @zh-CN 国际化配置
-   * */
-
   const columns: ProColumns<API.RuleListItem>[] = [
     {
       title: "Rule name",
@@ -186,7 +181,7 @@ const TableList: React.FC = () => {
       valueType: 'option',
       render: (_, record) => [
         <a
-          key="config"
+          key="update"
           onClick={() => {
             handleUpdateModalOpen(true);
             setCurrentRow(record);
@@ -194,7 +189,7 @@ const TableList: React.FC = () => {
         >
           Configuration
         </a>,
-        <a key="subscribeAlert" href="https://procomponents.ant.design/">
+        <a key="delete" href="https://procomponents.ant.design/">
           Subscribe to alerts
         </a>,
       ],

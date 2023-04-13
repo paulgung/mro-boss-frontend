@@ -28,21 +28,21 @@
       {
         path: '/opportunity/page1',
         name: '单位信息',
-        component: './TableList'
+        component: './Opportunity/page1'
       },
       {
         path: '/opportunity/page2',
         name: '产品信息',
-        component: './TableList'
+        component: './Opportunity/page2'
       },
       {
         path: '/opportunity/page3',
         name: '客户信息',
-        component: './TableList'
+        component: './Opportunity/page3'
       },{
         path: '/opportunity/page4',
         name: '供应商信息',
-        component: './TableList'
+        component: './Opportunity/page4'
       },
     ],
   },
