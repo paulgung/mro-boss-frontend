@@ -1,4 +1,4 @@
-import { addDataPage1, getDataPage1 } from '@/services/inbound';
+import { addDataPage1, getDataPage4 } from '@/services/outbound';
 import { ModalForm, ProFormText } from '@ant-design/pro-components';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ActionType, ProColumns } from '@ant-design/pro-table';
@@ -16,25 +16,50 @@ const Index: React.FC = () => {
 
   const columns: ProColumns<IInterface>[] = [
     {
-      title: '入库编号',
+      title: '退货编号',
       hideInSearch: false,
-      dataIndex: 'inboundId',
+      dataIndex: 'outboundId',
     },
     {
-      title: '入库日期',
+      title: '产品编号',
       ellipsis: true,
-      dataIndex: 'inboundDate',
+      dataIndex: 'productId',
+      hideInSearch: false,
+    },
+    {
+      title: '产品名称',
+      ellipsis: true,
+      dataIndex: 'productName',
       hideInSearch: true,
     },
     {
-      title: '供商名称',
-      ellipsis: true,
-      dataIndex: 'supplierId',
+      title: '规格',
+      dataIndex: 'standard',
       hideInSearch: true,
     },
     {
-      title: '操作员',
-      dataIndex: 'operator',
+      title: '型号',
+      dataIndex: 'type',
+      hideInSearch: true,
+    },
+    {
+      title: '单位',
+      dataIndex: 'unit',
+      hideInSearch: true,
+    },
+    {
+      title: '退货数量',
+      dataIndex: 'outboundNumber',
+      hideInSearch: true,
+    },
+    {
+      title: '退货单价',
+      dataIndex: 'outboundPrice',
+      hideInSearch: true,
+    },
+    {
+      title: '退货金额',
+      dataIndex: 'outboundTotal',
       hideInSearch: true,
     },
     {
@@ -47,17 +72,16 @@ const Index: React.FC = () => {
   return (
     <PageContainer>
       <ProTable<IInterface>
-        headerTitle="单位信息"
+        headerTitle="供商信息"
         columns={columns}
         actionRef={actionRef}
         cardBordered
         request={async ({ rows = 10, current }) => {
-          return getDataPage1({
+          return getDataPage4({
             pageSize: rows,
             pageNo: current,
           }).then(
             (res: any) => {
-              console.log('res', res);
               return {
                 data: res.data?.data,
                 success: res.data?.success,

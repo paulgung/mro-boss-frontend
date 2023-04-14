@@ -1,10 +1,10 @@
-import { addDataPage1, getDataPage1 } from '@/services/inbound';
-import { ModalForm, ProFormText } from '@ant-design/pro-components';
+import React, {useRef, useState} from 'react';
+import {Button, message} from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
-import type { ActionType, ProColumns } from '@ant-design/pro-table';
 import { ProTable } from '@ant-design/pro-table';
-import { Button, message } from 'antd';
-import React, { useRef, useState } from 'react';
+import type { ActionType, ProColumns } from '@ant-design/pro-table';
+import {addDataPage1, getDataPage1} from '@/services/outbound';
+import {ModalForm, ProFormText} from "@ant-design/pro-components";
 
 type IInterface = {
   id: number;
@@ -16,14 +16,14 @@ const Index: React.FC = () => {
 
   const columns: ProColumns<IInterface>[] = [
     {
-      title: '入库编号',
+      title: '出库编号',
       hideInSearch: false,
-      dataIndex: 'inboundId',
+      dataIndex: 'outboundId',
     },
     {
-      title: '入库日期',
+      title: '出库日期',
       ellipsis: true,
-      dataIndex: 'inboundDate',
+      dataIndex: 'outboundDate',
       hideInSearch: true,
     },
     {
@@ -44,6 +44,7 @@ const Index: React.FC = () => {
     },
   ];
 
+
   return (
     <PageContainer>
       <ProTable<IInterface>
@@ -52,19 +53,21 @@ const Index: React.FC = () => {
         actionRef={actionRef}
         cardBordered
         request={async ({ rows = 10, current }) => {
-          return getDataPage1({
-            pageSize: rows,
-            pageNo: current,
-          }).then(
+          return getDataPage1(
+            {
+              pageSize: rows,
+              pageNo: current,
+            },
+          ).then(
             (res: any) => {
-              console.log('res', res);
+              console.log('res',res);
               return {
                 data: res.data?.data,
                 success: res.data?.success,
                 total: res.data?.total,
               };
             },
-            (): any => {
+            ():any => {
               message.error('网络请求失败！');
               return {
                 data: [],
@@ -100,8 +103,8 @@ const Index: React.FC = () => {
         dateFormatter="string"
       />
       <ModalForm
-        labelCol={{ span: 4 }}
-        title="新建数据"
+        labelCol={{span:4}}
+        title='新建数据'
         layout={'horizontal'}
         width="500px"
         open={createModalOpen}
@@ -122,7 +125,7 @@ const Index: React.FC = () => {
               required: true,
             },
           ]}
-          label="序号"
+          label='序号'
           width="md"
           name="id"
         />
@@ -132,7 +135,7 @@ const Index: React.FC = () => {
               required: true,
             },
           ]}
-          label="公司名称"
+          label='公司名称'
           width="md"
           name="company"
         />
@@ -142,7 +145,7 @@ const Index: React.FC = () => {
               required: true,
             },
           ]}
-          label="联系电话"
+          label='联系电话'
           width="md"
           name="phone"
         />
@@ -152,7 +155,7 @@ const Index: React.FC = () => {
               required: true,
             },
           ]}
-          label="联系人"
+          label='联系人'
           width="md"
           name="name"
         />
@@ -162,11 +165,15 @@ const Index: React.FC = () => {
               required: true,
             },
           ]}
-          label="联系地址"
+          label='联系地址'
           width="md"
           name="address"
         />
-        <ProFormText label="备注" width="md" name="remark" />
+        <ProFormText
+          label='备注'
+          width="md"
+          name="remark"
+        />
       </ModalForm>
     </PageContainer>
   );

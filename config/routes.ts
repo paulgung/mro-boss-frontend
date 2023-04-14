@@ -79,21 +79,21 @@
       {
         path: '/outbound/page1',
         name: '出库登记',
-        component: './TableList'
+        component: './Outbound/page1'
       },
       {
         path: '/outbound/page2',
         name: '出库明细',
-        component: './TableList'
+        component: './Outbound/page2'
       },
       {
         path: '/outbound/page3',
         name: '退货登记',
-        component: './TableList'
+        component: './Outbound/page3'
       },{
         path: '/outbound/page4',
         name: '退货明细',
-        component: './TableList'
+        component: './Outbound/page4'
       },
     ],
   },
