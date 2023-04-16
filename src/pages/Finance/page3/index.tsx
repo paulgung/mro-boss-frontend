@@ -1,4 +1,4 @@
-import { addDataPage1, getDataPage1 } from '@/services/inbound';
+import { addDataPage1, getDataPage3 } from '@/services/finance';
 import { ModalForm, ProFormText } from '@ant-design/pro-components';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ActionType, ProColumns } from '@ant-design/pro-table';
@@ -7,6 +7,7 @@ import { Button, message } from 'antd';
 import React, { useRef, useState } from 'react';
 
 type IInterface = {
+  lock: boolean;
   id: number;
 };
 
@@ -16,20 +17,43 @@ const Index: React.FC = () => {
 
   const columns: ProColumns<IInterface>[] = [
     {
-      title: '入库编号',
+      title: 'ID',
       hideInSearch: false,
-      dataIndex: 'inboundId',
+      dataIndex: 'id',
     },
     {
-      title: '入库日期',
+      title: '记录锁定',
       ellipsis: true,
-      dataIndex: 'inboundDate',
+      dataIndex: 'lock',
+      hideInSearch: true,
+      render: (item, entity) => {
+        return entity?.lock ? 'true' : 'false';
+      },
+    },
+    {
+      title: '日期',
+      ellipsis: true,
+      dataIndex: 'date',
       hideInSearch: true,
     },
     {
-      title: '供商名称',
-      ellipsis: true,
-      dataIndex: 'supplierId',
+      title: '司机名',
+      dataIndex: 'driverName',
+      hideInSearch: true,
+    },
+    {
+      title: '结算金额',
+      dataIndex: 'totalMoney',
+      hideInSearch: true,
+    },
+    {
+      title: '结算方式',
+      dataIndex: 'payWay',
+      hideInSearch: true,
+    },
+    {
+      title: '结算账号',
+      dataIndex: 'account',
       hideInSearch: true,
     },
     {
@@ -47,17 +71,16 @@ const Index: React.FC = () => {
   return (
     <PageContainer>
       <ProTable<IInterface>
-        headerTitle="入库登记"
+        headerTitle="客户信息"
         columns={columns}
         actionRef={actionRef}
         cardBordered
         request={async ({ rows = 10, current }) => {
-          return getDataPage1({
+          return getDataPage3({
             pageSize: rows,
             pageNo: current,
           }).then(
             (res: any) => {
-              console.log('res', res);
               return {
                 data: res.data?.data,
                 success: res.data?.success,

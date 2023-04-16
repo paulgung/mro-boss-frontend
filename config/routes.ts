@@ -41,7 +41,7 @@
         component: './Opportunity/page3'
       },{
         path: '/opportunity/page4',
-        name: '供应商信息',
+        name: '供商信息',
         component: './Opportunity/page4'
       },
     ],
@@ -109,12 +109,7 @@
       {
         path: '/loss/page1',
         name: '损耗登记',
-        component: './TableList'
-      },
-      {
-        path: '/loss/page2',
-        name: '损耗明细',
-        component: './TableList'
+        component: './Loss/page1'
       }
     ],
   },
@@ -130,17 +125,17 @@
       {
         path: '/finance/page1',
         name: '供商付款',
-        component: './TableList'
+        component: './Finance/page1'
       },
       {
         path: '/finance/page2',
         name: '收客户款',
-        component: './TableList'
+        component: './Finance/page2'
       },
       {
         path: '/finance/page3',
         name: '运费结算',
-        component: './TableList'
+        component: './Finance/page3'
       }
     ],
   },
@@ -157,32 +152,22 @@
       {
         path: '/statistics/page1',
         name: '库存汇总',
-        component: './TableList'
+        component: './Statistics/page1'
       },
       {
         path: '/statistics/page2',
         name: '供商汇总',
-        component: './TableList'
+        component: './Statistics/page2'
       },
       {
         path: '/statistics/page3',
-        name: '供商对账',
-        component: './TableList'
+        name: '客户汇总',
+        component: './Statistics/page3'
       },
       {
         path: '/statistics/page4',
-        name: '运输对账',
-        component: './TableList'
-      },
-      {
-        path: '/statistics/page5',
-        name: '库存明细',
-        component: './TableList'
-      },
-      {
-        path: '/statistics/page6',
         name: '毛利汇总',
-        component: './TableList'
+        component: './Statistics/page4'
       }
     ],
   },

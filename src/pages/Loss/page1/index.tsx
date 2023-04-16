@@ -1,4 +1,4 @@
-import { addDataPage1, getDataPage1 } from '@/services/inbound';
+import { addDataPage1, getDataPage1 } from '@/services/loss';
 import { ModalForm, ProFormText } from '@ant-design/pro-components';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ActionType, ProColumns } from '@ant-design/pro-table';
@@ -16,25 +16,50 @@ const Index: React.FC = () => {
 
   const columns: ProColumns<IInterface>[] = [
     {
-      title: '入库编号',
+      title: '登记日期',
       hideInSearch: false,
-      dataIndex: 'inboundId',
+      dataIndex: 'date',
     },
     {
-      title: '入库日期',
+      title: '产品编号',
       ellipsis: true,
-      dataIndex: 'inboundDate',
+      dataIndex: 'productId',
+      hideInSearch: false,
+    },
+    {
+      title: '产品名称',
+      ellipsis: true,
+      dataIndex: 'productName',
       hideInSearch: true,
     },
     {
-      title: '供商名称',
-      ellipsis: true,
-      dataIndex: 'supplierId',
+      title: '规格',
+      dataIndex: 'standard',
       hideInSearch: true,
     },
     {
-      title: '操作员',
-      dataIndex: 'operator',
+      title: '型号',
+      dataIndex: 'type',
+      hideInSearch: true,
+    },
+    {
+      title: '单位',
+      dataIndex: 'unit',
+      hideInSearch: true,
+    },
+    {
+      title: '损耗数量',
+      dataIndex: 'lossNumber',
+      hideInSearch: true,
+    },
+    {
+      title: '损耗单价',
+      dataIndex: 'lossPrice',
+      hideInSearch: true,
+    },
+    {
+      title: '损耗金额',
+      dataIndex: 'lossTotal',
       hideInSearch: true,
     },
     {
@@ -47,7 +72,7 @@ const Index: React.FC = () => {
   return (
     <PageContainer>
       <ProTable<IInterface>
-        headerTitle="入库登记"
+        headerTitle="损耗登记"
         columns={columns}
         actionRef={actionRef}
         cardBordered

@@ -1,4 +1,4 @@
-import { addDataPage1, getDataPage1 } from '@/services/inbound';
+import { addDataPage1, getDataPage1 } from '@/services/finance';
 import { ModalForm, ProFormText } from '@ant-design/pro-components';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ActionType, ProColumns } from '@ant-design/pro-table';
@@ -8,6 +8,7 @@ import React, { useRef, useState } from 'react';
 
 type IInterface = {
   id: number;
+  lock: boolean;
 };
 
 const Index: React.FC = () => {
@@ -16,20 +17,43 @@ const Index: React.FC = () => {
 
   const columns: ProColumns<IInterface>[] = [
     {
-      title: '入库编号',
+      title: 'ID',
       hideInSearch: false,
-      dataIndex: 'inboundId',
+      dataIndex: 'id',
     },
     {
-      title: '入库日期',
+      title: '记录锁定',
       ellipsis: true,
-      dataIndex: 'inboundDate',
+      dataIndex: 'lock',
+      hideInSearch: true,
+      render: (item, entity) => {
+        return entity?.lock ? 'true' : 'false';
+      },
+    },
+    {
+      title: '付款日期',
+      ellipsis: true,
+      dataIndex: 'date',
       hideInSearch: true,
     },
     {
       title: '供商名称',
-      ellipsis: true,
-      dataIndex: 'supplierId',
+      dataIndex: 'supplierName',
+      hideInSearch: true,
+    },
+    {
+      title: '付款金额',
+      dataIndex: 'totalMoney',
+      hideInSearch: true,
+    },
+    {
+      title: '付款方式',
+      dataIndex: 'payWay',
+      hideInSearch: true,
+    },
+    {
+      title: '付款账号',
+      dataIndex: 'account',
       hideInSearch: true,
     },
     {
@@ -47,7 +71,7 @@ const Index: React.FC = () => {
   return (
     <PageContainer>
       <ProTable<IInterface>
-        headerTitle="入库登记"
+        headerTitle="供商付款"
         columns={columns}
         actionRef={actionRef}
         cardBordered

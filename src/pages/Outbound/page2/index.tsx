@@ -72,7 +72,7 @@ const Index: React.FC = () => {
   return (
     <PageContainer>
       <ProTable<IInterface>
-        headerTitle="产品信息"
+        headerTitle="出库明细"
         columns={columns}
         actionRef={actionRef}
         cardBordered
