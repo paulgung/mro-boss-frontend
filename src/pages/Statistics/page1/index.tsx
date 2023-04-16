@@ -1,150 +1,134 @@
-import {PageContainer} from '@ant-design/pro-components';
-import {Card, Col, Row, Timeline} from 'antd';
+import { PageContainer } from '@ant-design/pro-components';
+import { Card, Col, Row } from 'antd';
 import React from 'react';
-import {Column} from '@ant-design/plots';
 
-// 柱状图
-const DemoColumn = () => {
+import { Gauge } from '@ant-design/plots';
+
+const DemoGauge = () => {
+  const config = {
+    percent: 0.75,
+    height: 200,
+    range: {
+      ticks: [0, 1 / 3, 2 / 3, 1],
+      color: ['#F4664A', '#FAAD14', '#30BF78'],
+    },
+    indicator: {
+      pointer: {
+        style: {
+          stroke: '#D0D0D0',
+        },
+      },
+      pin: {
+        style: {
+          stroke: '#D0D0D0',
+        },
+      },
+    },
+    statistic: {
+      content: {
+        formatter: ({ percent }) => `库存量: ${(percent * 100).toFixed(0)}%`,
+
+        style: {
+          fontSize: '20px',
+          lineHeight: '36px',
+        },
+      },
+    },
+  };
+  return <Gauge {...config} />;
+};
+
+import { Waterfall } from '@ant-design/plots';
+
+const DemoWaterfall = () => {
   const data = [
     {
-      type: '一月',
-      sales: 38,
+      type: '日用品',
+      money: 120,
     },
     {
-      type: '二月',
-      sales: 52,
+      type: '伙食费',
+      money: 900,
     },
     {
-      type: '三月',
-      sales: 61,
+      type: '交通费',
+      money: 200,
     },
     {
-      type: '四月',
-      sales: 125,
+      type: '水电费',
+      money: 300,
     },
     {
-      type: '五月',
-      sales: 48,
+      type: '房租',
+      money: 1200,
     },
     {
-      type: '六月',
-      sales: 38,
+      type: '商场消费',
+      money: 1000,
     },
     {
-      type: '七月',
-      sales: 54,
-    },
-    {
-      type: '八月',
-      sales: 32,
-    },
-    {
-      type: '九月',
-      sales: 59,
-    },
-    {
-      type: '十月',
-      sales: 71,
-    },
-    {
-      type: '十一月',
-      sales: 28,
-    },
-    {
-      type: '十二月',
-      sales: 18,
+      type: '红包收入',
+      money: -2000,
     },
   ];
   const config = {
     data,
-    height:300,
+    height: 400,
     xField: 'type',
-    yField: 'sales',
-    label: {
-      // 可手动配置 label 数据标签位置
-      position: 'middle',
-      // 'top', 'bottom', 'middle',
-      // 配置样式
-      style: {
-        fill: '#FFFFFF',
-        opacity: 0.6,
-      },
-    },
-    xAxis: {
-      label: {
-        autoHide: true,
-        autoRotate: false,
-      },
-    },
+    yField: 'money',
+    appendPadding: [15, 0, 0, 0],
     meta: {
       type: {
         alias: '类别',
       },
-      sales: {
-        alias: '销售额',
+      money: {
+        alias: '收支',
+        formatter: (v) => `${v} 元`,
+      },
+    },
+    label: {
+      style: {
+        fontSize: 10,
+        fill: 'rgba(0,0,0,0.65)',
+      },
+      layout: [
+        {
+          type: 'interval-adjust-position',
+        },
+      ],
+    },
+    total: {
+      label: '总支出',
+      style: {
+        fill: '#96a6a6',
       },
     },
   };
-
-  // @ts-ignore
-  return <Column {...config} />;
+  return <Waterfall {...config} />;
 };
-
 // 欢迎页面
 const Welcome: React.FC = () => {
   return (
     <PageContainer>
-      {/*系统介绍*/}
-      <div>
-        <Card
-          style={{
-            borderRadius: 8,
-          }}
-        >
-          <div>
-            <div
-              style={{
-                fontSize: '22px',
-              }}
-            >
-              欢迎使用工业品采购信息系统
-            </div>
-            <p
-              style={{
-                marginTop: 14,
-                marginBottom: 32,
-              }}
-            >
-              工业品采购管理系统可为企业提供从寻源到合同，采购到付款，以及供应商全生命周期管理等数字化采购解决方案，通过采购系统满足企业定制化非目录采购需求，实现流程自动化，极大提升MRO采购效率，减少人为干预，合规透明，采购流程简化，轻松解决企业MRO采购领域痛点，大大提升企业内部运转效率。
-            </p>
-          </div>
-        </Card>
-      </div>
-      {/*跳转连接*/}
-      <div style={{marginTop:'16px'}}>
-        <Row gutter={16}>
-          <Col span={16}>
-            <Card title="访问量" style={{height:'400px'}}>
-              <DemoColumn/>
-            </Card>
-          </Col>
-          <Col span={8}>
-            <Card title="任务" style={{height:'400px'}}>
-              <Timeline>
-                <Timeline.Item color="green">商品寻源</Timeline.Item>
-                <Timeline.Item color="green">询价对比</Timeline.Item>
-                <Timeline.Item color="red">
-                  <p>签合同</p>
-                  <p>招标</p>
-                </Timeline.Item>
-                <Timeline.Item>供应商履约</Timeline.Item>
-                <Timeline.Item>验收付款</Timeline.Item>
-              </Timeline>
-            </Card>
-          </Col>
-        </Row>
-      </div>
-
+      <Row gutter={16}>
+        <Col span={10}>
+          <Card title="库存汇总" style={{ height: '300px',width:'auto' }}>
+            <DemoGauge />
+          </Card>
+        </Col>
+        <Col span={14}>
+          <Card title="库存汇总" style={{ height: '300px',width:'auto' }}>
+            <DemoGauge />
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col  span={24}>
+          <Card title="库存汇总" style={{ height: '500px',marginTop:'20px' }}>
+            <DemoWaterfall />
+          </Card>
+        </Col>
+      </Row>
     </PageContainer>
   );
 };

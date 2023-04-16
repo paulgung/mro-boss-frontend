@@ -1,92 +1,163 @@
-import {PageContainer} from '@ant-design/pro-components';
-import {Card, Col, Row, Timeline} from 'antd';
+import { Column } from '@ant-design/plots';
+import { PageContainer } from '@ant-design/pro-components';
+import { Card, Col, Row } from 'antd';
 import React from 'react';
-import {Column} from '@ant-design/plots';
 
-// 柱状图
 const DemoColumn = () => {
   const data = [
     {
-      type: '一月',
-      sales: 38,
+      name: '采购金额',
+      月份: 'Jan.',
+      月均降雨量: 18.9,
     },
     {
-      type: '二月',
-      sales: 52,
+      name: '采购金额',
+      月份: 'Feb.',
+      月均降雨量: 28.8,
     },
     {
-      type: '三月',
-      sales: 61,
+      name: '采购金额',
+      月份: 'Mar.',
+      月均降雨量: 39.3,
     },
     {
-      type: '四月',
-      sales: 125,
+      name: '采购金额',
+      月份: 'Apr.',
+      月均降雨量: 81.4,
     },
     {
-      type: '五月',
-      sales: 48,
+      name: '采购金额',
+      月份: 'May',
+      月均降雨量: 47,
     },
     {
-      type: '六月',
-      sales: 38,
+      name: '采购金额',
+      月份: 'Jun.',
+      月均降雨量: 20.3,
     },
     {
-      type: '七月',
-      sales: 54,
+      name: '采购金额',
+      月份: 'Jul.',
+      月均降雨量: 24,
     },
     {
-      type: '八月',
-      sales: 32,
+      name: '采购金额',
+      月份: 'Aug.',
+      月均降雨量: 35.6,
     },
     {
-      type: '九月',
-      sales: 59,
+      name: '付款金额',
+      月份: 'Jan.',
+      月均降雨量: 12.4,
     },
     {
-      type: '十月',
-      sales: 71,
+      name: '付款金额',
+      月份: 'Feb.',
+      月均降雨量: 23.2,
     },
     {
-      type: '十一月',
-      sales: 28,
+      name: '付款金额',
+      月份: 'Mar.',
+      月均降雨量: 34.5,
     },
     {
-      type: '十二月',
-      sales: 18,
+      name: '付款金额',
+      月份: 'Apr.',
+      月均降雨量: 99.7,
+    },
+    {
+      name: '付款金额',
+      月份: 'May',
+      月均降雨量: 52.6,
+    },
+    {
+      name: '付款金额',
+      月份: 'Jun.',
+      月均降雨量: 35.5,
+    },
+    {
+      name: '付款金额',
+      月份: 'Jul.',
+      月均降雨量: 37.4,
+    },
+    {
+      name: '付款金额',
+      月份: 'Aug.',
+      月均降雨量: 42.4,
+    },
+    {
+      name: '采购欠款',
+      月份: 'Jan.',
+      月均降雨量: 12.4,
+    },
+    {
+      name: '采购欠款',
+      月份: 'Feb.',
+      月均降雨量: 23.2,
+    },
+    {
+      name: '采购欠款',
+      月份: 'Mar.',
+      月均降雨量: 34.5,
+    },
+    {
+      name: '采购欠款',
+      月份: 'Apr.',
+      月均降雨量: 99.7,
+    },
+    {
+      name: '采购欠款',
+      月份: 'May',
+      月均降雨量: 52.6,
+    },
+    {
+      name: '采购欠款',
+      月份: 'Jun.',
+      月均降雨量: 35.5,
+    },
+    {
+      name: '采购欠款',
+      月份: 'Jul.',
+      月均降雨量: 37.4,
+    },
+    {
+      name: '采购欠款',
+      月份: 'Aug.',
+      月均降雨量: 42.4,
     },
   ];
   const config = {
     data,
-    height:300,
-    xField: 'type',
-    yField: 'sales',
+    height: 400,
+    isGroup: true,
+    xField: '月份',
+    yField: '月均降雨量',
+    seriesField: 'name',
+
+    /** 设置颜色 */
+    //color: ['#1ca9e6', '#f88c24'],
+
+    /** 设置间距 */
+    // marginRatio: 0.1,
     label: {
       // 可手动配置 label 数据标签位置
       position: 'middle',
-      // 'top', 'bottom', 'middle',
-      // 配置样式
-      style: {
-        fill: '#FFFFFF',
-        opacity: 0.6,
-      },
-    },
-    xAxis: {
-      label: {
-        autoHide: true,
-        autoRotate: false,
-      },
-    },
-    meta: {
-      type: {
-        alias: '类别',
-      },
-      sales: {
-        alias: '销售额',
-      },
+      // 'top', 'middle', 'bottom'
+      // 可配置附加的布局方法
+      layout: [
+        // 柱形图数据标签位置自动调整
+        {
+          type: 'interval-adjust-position',
+        }, // 数据标签防遮挡
+        {
+          type: 'interval-hide-overlap',
+        }, // 数据标签文颜色自动调整
+        {
+          type: 'adjust-color',
+        },
+      ],
     },
   };
-
-  // @ts-ignore
   return <Column {...config} />;
 };
 
@@ -94,57 +165,13 @@ const DemoColumn = () => {
 const Welcome: React.FC = () => {
   return (
     <PageContainer>
-      {/*系统介绍*/}
-      <div>
-        <Card
-          style={{
-            borderRadius: 8,
-          }}
-        >
-          <div>
-            <div
-              style={{
-                fontSize: '22px',
-              }}
-            >
-              欢迎使用工业品采购信息系统
-            </div>
-            <p
-              style={{
-                marginTop: 14,
-                marginBottom: 32,
-              }}
-            >
-              工业品采购管理系统可为企业提供从寻源到合同，采购到付款，以及供应商全生命周期管理等数字化采购解决方案，通过采购系统满足企业定制化非目录采购需求，实现流程自动化，极大提升MRO采购效率，减少人为干预，合规透明，采购流程简化，轻松解决企业MRO采购领域痛点，大大提升企业内部运转效率。
-            </p>
-          </div>
-        </Card>
-      </div>
-      {/*跳转连接*/}
-      <div style={{marginTop:'16px'}}>
-        <Row gutter={16}>
-          <Col span={16}>
-            <Card title="访问量" style={{height:'400px'}}>
-              <DemoColumn/>
-            </Card>
-          </Col>
-          <Col span={8}>
-            <Card title="任务" style={{height:'400px'}}>
-              <Timeline>
-                <Timeline.Item color="green">商品寻源</Timeline.Item>
-                <Timeline.Item color="green">询价对比</Timeline.Item>
-                <Timeline.Item color="red">
-                  <p>签合同</p>
-                  <p>招标</p>
-                </Timeline.Item>
-                <Timeline.Item>供应商履约</Timeline.Item>
-                <Timeline.Item>验收付款</Timeline.Item>
-              </Timeline>
-            </Card>
-          </Col>
-        </Row>
-      </div>
-
+      <Row gutter={16}>
+        <Col span={24}>
+          <Card title="供商汇总" style={{ height: '500px' }}>
+            <DemoColumn />
+          </Card>
+        </Col>
+      </Row>
     </PageContainer>
   );
 };

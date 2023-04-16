@@ -45,7 +45,7 @@ export default {
       success: true,
       data: {
         name: 'gongshaoxu',
-        avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+        avatar: null,
         userid: '20191002447',
         email: 'gongshaoxu@gmail.com',
         signature: '我愿意看见一只只白帆',

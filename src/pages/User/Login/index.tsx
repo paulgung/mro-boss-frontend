@@ -1,11 +1,8 @@
 import { Footer } from '@/components';
+import loginBackground from '@/images/loginBackground.png';
 import { login } from '@/services/ant-design-pro/api';
 import { getFakeCaptcha } from '@/services/ant-design-pro/login';
-import {
-  LockOutlined,
-  MobileOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
+import { LockOutlined, MobileOutlined, UserOutlined } from '@ant-design/icons';
 import {
   LoginForm,
   ProFormCaptcha,
@@ -17,7 +14,6 @@ import { history, useModel } from '@umijs/max';
 import { Alert, message, Tabs } from 'antd';
 import React, { useState } from 'react';
 import { flushSync } from 'react-dom';
-
 
 const LoginMessage: React.FC<{
   content: string;
@@ -38,20 +34,16 @@ const Login: React.FC = () => {
   const [userLoginState, setUserLoginState] = useState<API.LoginResult>({});
   const [type, setType] = useState<string>('account');
   const { initialState, setInitialState } = useModel('@@initialState');
-
-  const containerClassName = useEmotionCss(() => {
+  useEmotionCss(() => {
     return {
       display: 'flex',
       flexDirection: 'column',
       height: '100vh',
       overflow: 'auto',
-      backgroundImage:
-        "url('https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/V-_oS6r-i7wAAAAAAAAAAAAAFl94AQBr')",
+      background: loginBackground,
       backgroundSize: '100% 100%',
     };
   });
-
-
   const fetchUserInfo = async () => {
     const userInfo = await initialState?.fetchUserInfo?.();
     if (userInfo) {
@@ -69,7 +61,7 @@ const Login: React.FC = () => {
       // 登录
       const msg = await login({ ...values, type });
       if (msg.status === 'ok') {
-        const defaultLoginSuccessMessage = '登录成功！'
+        const defaultLoginSuccessMessage = '登录成功！';
         message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
         const urlParams = new URL(window.location.href).searchParams;
@@ -87,7 +79,7 @@ const Login: React.FC = () => {
   const { status, type: loginType } = userLoginState;
 
   return (
-    <div className={containerClassName}>
+    <div style={{height:'100%',backgroundImage:`url(${loginBackground})`}}>
       <div
         style={{
           flex: '1',
@@ -110,23 +102,22 @@ const Login: React.FC = () => {
           <Tabs
             activeKey={type}
             onChange={setType}
+            style={{marginTop:'16px'}}
             centered
             items={[
               {
                 key: 'account',
-                label:  '账户密码登录',
+                label: '账户密码登录',
               },
               {
                 key: 'mobile',
-                label:  '手机号登录',
+                label: '手机号登录',
               },
             ]}
           />
 
           {status === 'error' && loginType === 'account' && (
-            <LoginMessage
-              content={'账户或密码错误(admin/admin)'}
-            />
+            <LoginMessage content={'账户或密码错误(admin/admin)'} />
           )}
           {type === 'account' && (
             <>
@@ -140,7 +131,7 @@ const Login: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: "请输入用户名!",
+                    message: '请输入用户名!',
                   },
                 ]}
               />
@@ -154,7 +145,7 @@ const Login: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: "请输入密码！"
+                    message: '请输入密码！',
                   },
                 ]}
               />
@@ -170,15 +161,15 @@ const Login: React.FC = () => {
                   prefix: <MobileOutlined />,
                 }}
                 name="mobile"
-                placeholder={ '手机号'}
+                placeholder={'手机号'}
                 rules={[
                   {
                     required: true,
-                    message: "请输入手机号！"
+                    message: '请输入手机号！',
                   },
                   {
                     pattern: /^1\d{10}$/,
-                    message: "手机号格式错误！"
+                    message: '手机号格式错误！',
                   },
                 ]}
               />
@@ -195,13 +186,13 @@ const Login: React.FC = () => {
                   if (timing) {
                     return `${count} 获取验证码`;
                   }
-                  return '获取验证码'
+                  return '获取验证码';
                 }}
                 name="captcha"
                 rules={[
                   {
                     required: true,
-                    message: "请输入验证码！"
+                    message: '请输入验证码！',
                   },
                 ]}
                 onGetCaptcha={async (phone) => {
