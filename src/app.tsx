@@ -19,10 +19,20 @@ export async function getInitialState(): Promise<{
   // 初始化查询用户信息方法
   const fetchUserInfo = async () => {
     try {
-      const msg = await queryCurrentUser({
-        skipErrorHandler: true,
-      });
-      return msg.data;
+      const msg = await queryCurrentUser();
+      const data = {
+        access: 'admin',
+        avatar: null,
+        country: 'China',
+        email: 'gongshaoxu@gmail.com',
+        group: '京东集团－京东工业－前端技术部－前端开发工程师',
+        name: 'gongshaoxu',
+        phone: '15631027945',
+        signature: '我愿意看见一只只白帆',
+        title: '前端开发工程师',
+        userid: '20191002447',
+      };
+      return msg.data || data;
     } catch (error) {
       history.push(loginPath);
     }
@@ -34,17 +44,15 @@ export async function getInitialState(): Promise<{
     return {
       fetchUserInfo,
       currentUser,
-      settings: defaultSettings as Partial<LayoutSettings>,
     };
   }
   return {
     fetchUserInfo,
-    settings: defaultSettings as Partial<LayoutSettings>,
   };
 }
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
-export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
+export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
     title: '工业品采购管理系统',
     siderWidth: 180,
@@ -82,7 +90,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
       },
     },
     avatarProps: {
-      src: gongshaoxu,  // initialState?.currentUser?.avatar
+      src: gongshaoxu, // initialState?.currentUser?.avatar
       title: <AvatarName />,
       render: (_, avatarChildren) => {
         return <AvatarDropdown>{avatarChildren}</AvatarDropdown>;
