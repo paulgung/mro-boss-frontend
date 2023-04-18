@@ -1,22 +1,20 @@
 import { AvatarDropdown, AvatarName, Footer } from '@/components';
 import { currentUser as queryCurrentUser } from '@/services/ant-design-pro/api';
 import type { Settings as LayoutSettings } from '@ant-design/pro-components';
-import { SettingDrawer } from '@ant-design/pro-components';
 import type { RunTimeLayoutConfig } from '@umijs/max';
 import { history } from '@umijs/max';
 import defaultSettings from '../config/defaultSettings';
+import gongshaoxu from './images/gongshaoxu.jpg';
 import { errorConfig } from './requestErrorConfig';
-const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
-import gongshaoxu from './images/gongshaoxu.jpg'
 
 /**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
  * */
 export async function getInitialState(): Promise<{
   settings?: Partial<LayoutSettings>;
-  currentUser?: API.CurrentUser;
-  fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
+  currentUser?: any;
+  fetchUserInfo?: () => Promise<any | undefined>;
 }> {
   // 初始化查询用户信息方法
   const fetchUserInfo = async () => {
@@ -49,8 +47,8 @@ export async function getInitialState(): Promise<{
 export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
   return {
     title: '工业品采购管理系统',
-    siderWidth:180,
-    token:{
+    siderWidth: 180,
+    token: {
       header: {
         colorBgHeader: '#071023',
         colorHeaderTitle: '#fff',
@@ -102,29 +100,9 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
       }
     },
     menuHeaderRender: undefined,
-    collapsedButtonRender:false,
-    collapsed:false,
-    childrenRender: (children) => {
-      return (
-        <>
-          {children}
-          {isDev && (
-            <SettingDrawer
-              disableUrlParams
-              enableDarkTheme
-              settings={initialState?.settings}
-              onSettingChange={(settings) => {
-                setInitialState((preInitialState) => ({
-                  ...preInitialState,
-                  settings,
-                }));
-              }}
-            />
-          )}
-        </>
-      );
-    },
-    ...initialState?.settings,
+    collapsedButtonRender: false,
+    collapsed: false,
+    ...defaultSettings,
   };
 };
 
