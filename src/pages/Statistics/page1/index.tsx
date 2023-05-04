@@ -3,8 +3,44 @@ import { Card, Col, Row } from 'antd';
 import React from 'react';
 
 import { Gauge } from '@ant-design/plots';
+import { Waterfall } from '@ant-design/plots';
 
 const DemoGauge = () => {
+  const config = {
+    percent: 0.15,
+    height: 200,
+    range: {
+      ticks: [0, 1 / 3, 2 / 3, 1],
+      color: ['#F4664A', '#FAAD14', '#30BF78'],
+    },
+    indicator: {
+      pointer: {
+        style: {
+          stroke: '#D0D0D0',
+        },
+      },
+      pin: {
+        style: {
+          stroke: '#D0D0D0',
+        },
+      },
+    },
+    statistic: {
+      content: {
+        formatter: ({ percent }) => `预警量: ${(percent * 100).toFixed(0)}%`,
+
+        style: {
+          fontSize: '20px',
+          lineHeight: '36px',
+        },
+      },
+    },
+  };
+  return <Gauge {...config} />;
+};
+
+
+const DemoGauge2 = () => {
   const config = {
     percent: 0.75,
     height: 200,
@@ -38,36 +74,35 @@ const DemoGauge = () => {
   return <Gauge {...config} />;
 };
 
-import { Waterfall } from '@ant-design/plots';
 
 const DemoWaterfall = () => {
   const data = [
     {
-      type: '日用品',
+      type: '螺丝刀',
       money: 120,
     },
     {
-      type: '伙食费',
+      type: '电钻',
       money: 900,
     },
     {
-      type: '交通费',
+      type: '高速钻头',
       money: 200,
     },
     {
-      type: '水电费',
+      type: '饰面板材',
       money: 300,
     },
     {
-      type: '房租',
+      type: '活动卡箍',
       money: 1200,
     },
     {
-      type: '商场消费',
+      type: '钻石砂轮',
       money: 1000,
     },
     {
-      type: '红包收入',
+      type: '电子天平',
       money: -2000,
     },
   ];
@@ -83,7 +118,7 @@ const DemoWaterfall = () => {
       },
       money: {
         alias: '收支',
-        formatter: (v) => `${v} 元`,
+        formatter: (v) => `${v} 个`,
       },
     },
     label: {
@@ -98,7 +133,7 @@ const DemoWaterfall = () => {
       ],
     },
     total: {
-      label: '总支出',
+      label: '总库存',
       style: {
         fill: '#96a6a6',
       },
@@ -112,13 +147,13 @@ const Welcome: React.FC = () => {
     <PageContainer>
       <Row gutter={16}>
         <Col span={10}>
-          <Card title="库存汇总" style={{ height: '300px',width:'auto' }}>
+          <Card title="库存预警" style={{ height: '300px',width:'auto' }}>
             <DemoGauge />
           </Card>
         </Col>
         <Col span={14}>
           <Card title="库存汇总" style={{ height: '300px',width:'auto' }}>
-            <DemoGauge />
+            <DemoGauge2 />
           </Card>
         </Col>
       </Row>
