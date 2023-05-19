@@ -38,7 +38,7 @@ export async function getDataPage4(params?: { [key: string]: any }) {
 export async function addDataPage1(params?: { [key: string]: any }) {
   return axios(baseUrl + '/page1', {
     method: 'POST',
-    ...(params || {}),
+    data: params,
   });
 }
 
@@ -46,7 +46,7 @@ export async function addDataPage1(params?: { [key: string]: any }) {
 export async function addDataPage2(params?: { [key: string]: any }) {
   return axios(baseUrl + '/page2', {
     method: 'POST',
-    ...(params || {}),
+    data: params,
   });
 }
 
@@ -54,7 +54,7 @@ export async function addDataPage2(params?: { [key: string]: any }) {
 export async function addDataPage3(params?: { [key: string]: any }) {
   return axios(baseUrl + '/page3', {
     method: 'POST',
-    ...(params || {}),
+    data: params,
   });
 }
 
@@ -62,6 +62,6 @@ export async function addDataPage3(params?: { [key: string]: any }) {
 export async function addDataPage4(params?: { [key: string]: any }) {
   return axios(baseUrl + '/page1', {
     method: 'POST',
-    ...(params || {}),
+    data: params,
   });
 }

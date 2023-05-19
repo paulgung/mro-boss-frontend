@@ -57,11 +57,15 @@ const Index: React.FC = () => {
         columns={columns}
         actionRef={actionRef}
         cardBordered
-        request={async ({ rows = 10, current }) => {
+        request={async (search) => {
+          const { rows = 10, current, id, companyName } = search;
+          console.log(rows,current);
           return getDataPage1(
             {
               pageSize: rows,
               pageNo: current,
+              id,
+              companyName
             },
           ).then(
             (res: any) => {
@@ -130,19 +134,9 @@ const Index: React.FC = () => {
               required: true,
             },
           ]}
-          label='序号'
-          width="md"
-          name="id"
-        />
-        <ProFormText
-          rules={[
-            {
-              required: true,
-            },
-          ]}
           label='公司名称'
           width="md"
-          name="company"
+          name="companyName"
         />
         <ProFormText
           rules={[
