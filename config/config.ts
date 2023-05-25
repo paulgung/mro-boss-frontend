@@ -1,4 +1,4 @@
-// https://umijs.org/config/
+// 系统配置
 import { defineConfig } from '@umijs/max';
 import { join } from 'path';
 import defaultSettings from './defaultSettings';

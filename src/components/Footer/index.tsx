@@ -2,6 +2,7 @@ import { GithubOutlined } from '@ant-design/icons';
 import { DefaultFooter } from '@ant-design/pro-components';
 import React from 'react';
 
+// 页面尾部
 const Footer: React.FC = () => {
   const defaultMessage = '中国地质大学(武汉)';
   const currentYear = new Date().getFullYear();

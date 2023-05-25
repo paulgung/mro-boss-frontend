@@ -1,11 +1,10 @@
 import { PageContainer } from '@ant-design/pro-components';
 import { Card, Col, Row } from 'antd';
 import React from 'react';
-
 import { Gauge } from '@ant-design/plots';
 import { Waterfall } from '@ant-design/plots';
 
-const DemoGauge = () => {
+const InventoryAlert = () => {
   const config = {
     percent: 0.15,
     height: 200,
@@ -28,7 +27,6 @@ const DemoGauge = () => {
     statistic: {
       content: {
         formatter: ({ percent }) => `预警量: ${(percent * 100).toFixed(0)}%`,
-
         style: {
           fontSize: '20px',
           lineHeight: '36px',
@@ -141,14 +139,14 @@ const DemoWaterfall = () => {
   };
   return <Waterfall {...config} />;
 };
-// 欢迎页面
-const Welcome: React.FC = () => {
+// 库存预警页面
+const inventoryAlert: React.FC = () => {
   return (
     <PageContainer>
       <Row gutter={16}>
         <Col span={10}>
           <Card title="库存预警" style={{ height: '300px',width:'auto' }}>
-            <DemoGauge />
+            <InventoryAlert />
           </Card>
         </Col>
         <Col span={14}>
@@ -168,4 +166,4 @@ const Welcome: React.FC = () => {
   );
 };
 
-export default Welcome;
+export default inventoryAlert;

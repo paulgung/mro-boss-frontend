@@ -4,6 +4,7 @@ import type { DropDownProps } from 'antd/es/dropdown';
 import classNames from 'classnames';
 import React from 'react';
 
+// 页面头部
 export type HeaderDropdownProps = {
   overlayClassName?: string;
   placement?: 'bottomLeft' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight' | 'bottomCenter';

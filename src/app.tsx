@@ -100,6 +100,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
       content: initialState?.currentUser?.name,
     },
     footerRender: () => <Footer />,
+    // 验证登陆态
     onPageChange: () => {
       const { location } = history;
       // 如果没有登录，重定向到 login
